@@ -6,4 +6,5 @@ jobs:
   hello_world_job:
   steps:
     name: Say hello
-    run: echo "Github action: Hello, world!"
+    run: |
+      echo "Github action Hello, world!"
