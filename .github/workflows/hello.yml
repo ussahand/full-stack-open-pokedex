@@ -8,8 +8,9 @@ jobs:
     steps:
       - name: Say hello
         run: |
-          echo "Github action Hello, world!"
-
-      - name: Say hello again
-        run: echo "Github action => Hello, world again!"
+          echo "Hello World!"
+      - name: Now it is
+        run: date
+      - name: Directory content
+        run: ls -la
 
