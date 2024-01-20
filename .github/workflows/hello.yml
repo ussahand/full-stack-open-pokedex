@@ -11,5 +11,5 @@ jobs:
           echo "Github action Hello, world!"
 
       - name: Say hello again
-        run: echo "Github action => Hello, world again!""
+        run: echo "Github action => Hello, world again!"
 
