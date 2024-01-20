@@ -10,3 +10,6 @@ jobs:
         run: |
           echo "Github action Hello, world!"
 
+      - name: Say hello again
+        run: echo "Github action: Hello, world again!"
+
