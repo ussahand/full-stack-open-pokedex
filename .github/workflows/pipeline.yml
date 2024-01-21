@@ -15,9 +15,9 @@ jobs:
         node-version: "16"
 
     - name: Install dependencies
-      run: npm install
+      run: yarn
     - run: echo "npm installed properly :-)"
     - name: check style
-      run: npm run eslint
+      run: yarn eslint
     
     
