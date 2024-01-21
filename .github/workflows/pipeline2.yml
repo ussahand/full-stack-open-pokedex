@@ -4,7 +4,6 @@ on:
     branches: main
   # A pull_request:
     # branches: [ "main" ]
-
 jobs:
   deploy-for-testing:
     runs-on: ubuntu-latest
@@ -16,8 +15,9 @@ jobs:
         node-version: "16"
 
     - name: Install dependencies
-      run: |
-        npm install
+      run: npm install
     - run: echo "npm installed properly :-)"
+    - name: check style
+      run: npm run eslint
     
     
