@@ -1,19 +1,23 @@
-name: Deployment pipeline
+name: Deployment CI Pipeline
 on:
   push:
-    branches:
-      - main
+    branches: main
+  # A pull_request:
+    # branches: [ "main" ]
 jobs:
-  simple_deployment_pipeline:
+  deploy-for-testing:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: setup-node@v3
-      with: 
-        node-version: '16.x'
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: "16"
 
     - name: Install dependencies
       run: npm install
+    - run: echo "npm installed properly :-)"
     - name: check style
       run: npm run eslint
-
+    
+    
