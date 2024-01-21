@@ -21,3 +21,10 @@ jobs:
 
     - name: check style
       run: yarn eslint
+
+    - name: build production
+      run: yarn build
+
+    - name: run tests
+      run: yarn test
+      
