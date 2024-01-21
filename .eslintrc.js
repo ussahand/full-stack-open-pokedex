@@ -9,6 +9,9 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended'
   ],
+  'overrides': [
+    { 'files': ['src/*.jsx'] },
+  ],
   'parserOptions': {
     'ecmaFeatures': {
       'jsx': true
@@ -22,8 +25,8 @@ module.exports = {
   'rules': {
     'indent': [
       'error',
-        2
-      ],
+      2
+    ],
     'linebreak-style': [
       'error',
       'unix'
@@ -48,3 +51,4 @@ module.exports = {
     'react/prop-types': 0
   }
 }
+
