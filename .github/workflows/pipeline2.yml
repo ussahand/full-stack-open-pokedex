@@ -1,8 +1,7 @@
-name: CI Pipeline / NodeJS with Webpack
-
+name: Deployment CI Pipeline
 on:
   push:
-    branches: [ "main" ]
+    branches: "main" 
   # A pull_request:
     # branches: [ "main" ]
 
