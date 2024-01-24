@@ -11,6 +11,6 @@ app.get('/version', (req, res) => {
 })
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console, semi 
+  // eslint-disable-next-line no-console, semi
   console.log(`server started on port ${PORT}`)
 })
