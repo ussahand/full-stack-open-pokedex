@@ -38,7 +38,7 @@ jobs:
     - name: Prepare Fly.io
       #This action installs and configures the flyctl command-line tool, which is used to interact with Fly.io.
       uses: superfly/flyctl-actions/setup-flyctl@master
-    - run: flyctl deploy --remote-only --alias sahand-learning-machine --config fly.toml --var "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
+    - run: flyctl deploy --remote-only --config fly.toml --var "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
       env:
         #allowing flyctl to authenticate with your Fly.io account.
         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
