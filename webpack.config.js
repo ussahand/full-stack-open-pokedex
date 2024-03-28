@@ -8,6 +8,10 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/'
   },
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: path.resolve(__dirname, '.temp_cache'),
+  },
   module: {
     rules: [
       {
