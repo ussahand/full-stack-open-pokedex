@@ -1,0 +1,20 @@
+name: Print GitHub Action Variables
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: [main]
+    #types: [opened, synchronize]
+jobs:
+  print-variables:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Event Name
+        run: echo "Current event name: $GITHUB_EVENT_NAME"
+
+      - name: Print Triggering Branch
+        run: echo "Triggering branch: ${{ github.ref }}"
+
+      - name: Print Repository Name
+        run: echo "Repository name: ${{ github.repository }}"
