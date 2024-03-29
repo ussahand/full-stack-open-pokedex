@@ -3,7 +3,8 @@ on:
   push:
     branches: main
   pull_request:
-    branches: [main] #types: [opened, synchronize]  # Commented out temporarily
+    branches: main
+
 jobs:
   print-variables:
     runs-on: ubuntu-latest
