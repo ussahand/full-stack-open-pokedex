@@ -40,7 +40,10 @@ jobs:
       #This action installs and configures the flyctl command-line tool, which is used to interact with Fly.io.
       if: ${{ github.event_name == 'push' }}
       uses: superfly/flyctl-actions/setup-flyctl@master
-    - run: flyctl deploy --remote-only --config fly.toml --env "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
+
+    - name: Deploy to Fly.io
+      if: ${{ github.event_name == 'push' }}
+      run: flyctl deploy --remote-only --config fly.toml --env "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
       env:
         #allowing flyctl to authenticate with your Fly.io account.
         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
