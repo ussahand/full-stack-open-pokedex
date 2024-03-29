@@ -7,7 +7,6 @@ on:
     types: [opened, synchronize]
 jobs:
   deploy-for-testing:
-    #if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -37,6 +36,7 @@ jobs:
         start: yarn start-prod
         wait-on: http://localhost:5000        
 
+    if: ${{ github.event_name == 'push' }}
     - name: Prepare Fly.io
       #This action installs and configures the flyctl command-line tool, which is used to interact with Fly.io.
       uses: superfly/flyctl-actions/setup-flyctl@master
