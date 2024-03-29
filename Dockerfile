@@ -23,7 +23,8 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python
 
 # Install node modules
-COPY --link package-lock.json package.json yarn.lock ./
+# COPY --link package-lock.json package.json yarn.lock ./
+COPY --link package.json yarn.lock ./
 RUN yarn install --frozen-lockfile --production=false
 
 # Copy application code
