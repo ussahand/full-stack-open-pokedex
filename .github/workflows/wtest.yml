@@ -11,25 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: GITHUB.EVENT_NAME:${{GITHUB.EVENT_NAME}}
+      - name: Print Workflow Variables
         run: |
-          echo "line 1"
-          echo -e "line 2\nline3\nline4"
-        
-      - name: Print Pull Request Status:${{ github.event.pull_request.status }}
-        run: ""
-        
-      - name: Triggering Branch, github.ref:${{github.ref}}
-        run: ""
-
-      - name: Repos Name, github.repository:${{ github.repository }}
-        run: ""
-        
-      - name: Source Branch, github.event.pull_request.head.label:${{ github.event.pull_request.head.label }}
-        run: ""
-
-      - name: Destination(base) branch, github.event.pull_request.base.label:${{ github.event.pull_request.base.label }}
-        run: ""
-
+          echo "[GITHUB.EVENT_NAME:${{GITHUB.EVENT_NAME}}]"
+          echo "[github.event.pull_request.status:${{ github.event.pull_request.status }}]"
+          echo "[Repos Name, github.repository:${{ github.repository }}]"
+          echo "[Triggering Branch, github.ref:${{github.ref}}]"
+          echo "[Source Branch, github.event.pull_request.head.label:${{ github.event.pull_request.head.label }}]"
+          echo "[Destination(base) branch, github.event.pull_request.base.label:${{ github.event.pull_request.base.label }}]"
       - name: PR object
         run: echo "Pull Request Object:${{ toJson(github.event.pull_request) }}"
