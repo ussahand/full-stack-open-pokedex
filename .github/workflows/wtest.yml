@@ -15,7 +15,7 @@ jobs:
         run: echo 
         
       - name: Print Pull Request Status, github.event.pull_request.status
-        run: echo ""
+        run: echo "first\nsecond"
         
       - name: Print Triggering Branch, github.ref
         run: ""
