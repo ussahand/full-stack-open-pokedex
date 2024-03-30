@@ -12,13 +12,13 @@ jobs:
 
     steps:
       - name: GITHUB.EVENT_NAME:${{GITHUB.EVENT_NAME}}
-        #run: echo "${{GITHUB.EVENT_NAME}}"
+        run: echo 
         
       - name: Print Pull Request Status, github.event.pull_request.status
-        run: echo "${{ github.event.pull_request.status }}"
+        run: echo ""
         
       - name: Print Triggering Branch, github.ref
-        run: echo "${{ github.ref }}"
+        run: ""
 
       - name: Print Repository Name, github.repository
         run: echo "${{ github.repository }}"
