@@ -7,7 +7,6 @@ on:
     types: [opened, synchronize]
 jobs:
   deploy-for-testing:
-    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
 
     steps:
