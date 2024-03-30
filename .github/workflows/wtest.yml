@@ -11,8 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Print Event Name
+        run: echo "Current event name:$GITHUB_EVENT_NAME "
+
       - name: Print Triggering Branch
-        run: echo "Triggering branch: ${{ github.ref }}"
+        run: echo "Triggering branch:${{ github.ref }}"
 
       - name: Print Repository Name
-        run: echo "Repository name: ${{ github.repository }}"
+        run: echo "Repository name:${{ github.repository }}"
