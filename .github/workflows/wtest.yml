@@ -13,7 +13,10 @@ jobs:
     steps:
       - name: Print Event Name
         run: echo "Current event name:${{GITHUB.EVENT_NAME}}"
-
+        
+      - name: Print Pull Request Status
+        run: echo "Pull request status:${{ github.event.pull_request.status }}"
+        
       - name: Print Triggering Branch
         run: echo "Triggering branch:${{ github.ref }}"
 
