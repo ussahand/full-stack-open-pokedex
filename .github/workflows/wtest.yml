@@ -12,7 +12,9 @@ jobs:
 
     steps:
       - name: GITHUB.EVENT_NAME:${{GITHUB.EVENT_NAME}}
-        run: echo 
+        run: |
+          echo "line 1"
+          echo "line 2\nline3\nline4"
         
       - name: Print Pull Request Status:${{ github.event.pull_request.status }}
         run: ""
