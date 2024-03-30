@@ -22,3 +22,10 @@ jobs:
 
       - name: Print Repository Name
         run: echo "Repository name:${{ github.repository }}"
+         echo "Repository name:${{ github.event.repository.full_name }}"
+        
+      - name: Print Source Repository
+        run: echo "Source repository:${{ github.event.pull_request.head.repo.full_name }}"
+
+      - name: Print Destination(base) Repository
+        run: echo "Destination repository:${{ github.event.pull_request.base.repo.full_name }}"
