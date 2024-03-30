@@ -31,4 +31,4 @@ jobs:
         run: echo "Destination repository:${{ github.event.pull_request.base.label }}"
 
       - name: PR object
-        run: echo "Destination repository:${{ toJson(github.event.pull_request) }}"
+        run: echo "Pull Request Object:${{ toJson(github.event.pull_request) }}"
