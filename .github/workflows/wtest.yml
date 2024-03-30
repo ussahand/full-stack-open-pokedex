@@ -14,21 +14,20 @@ jobs:
       - name: GITHUB.EVENT_NAME:${{GITHUB.EVENT_NAME}}
         run: echo 
         
-      - name: Print Pull Request Status, github.event.pull_request.status
-        run: echo "first\nsecond"
+      - name: Print Pull Request Status:${{ github.event.pull_request.status }}
+        run: ""
         
-      - name: Print Triggering Branch, github.ref
+      - name: Triggering Branch, github.ref:${{github.ref}}
         run: ""
 
-      - name: Print Repository Name, github.repository
-        run: echo "${{ github.repository }}"
-
+      - name: Repos Name, github.repository:${{ github.repository }}
+        run: ""
         
-      - name: Print Source Branch, github.event.pull_request.head.label
-        run: echo "${{ github.event.pull_request.head.label }}"
+      - name: Source Branch, github.event.pull_request.head.label:${{ github.event.pull_request.head.label }}
+        run: ""
 
-      - name: Print Destination(base) branch, github.event.pull_request.base.label
-        run: echo "${{ github.event.pull_request.base.label }}"
+      - name: Destination(base) branch, github.event.pull_request.base.label:${{ github.event.pull_request.base.label }}
+        run: ""
 
       - name: PR object
         run: echo "Pull Request Object:${{ toJson(github.event.pull_request) }}"
