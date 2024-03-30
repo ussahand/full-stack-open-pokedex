@@ -21,6 +21,7 @@ jobs:
           echo "[Pull request state:${{ github.event.pull_request.state }}]"
           echo "[Pull request merged: ${{ github.event.pull_request.merged }}]"
           echo "[Statuses URL: ${{ github.event.pull_request.statuses_url }}"
+          echo "Done"
     
       - name: PR object
         run: echo "Pull Request Object:${{ toJson(github.event.pull_request) }}"
