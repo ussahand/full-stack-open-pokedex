@@ -11,24 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Event Name
-        run: echo "Current event name:${{GITHUB.EVENT_NAME}}"
+      - name: Print Event Name, GITHUB.EVENT_NAME
+        run: echo "${{GITHUB.EVENT_NAME}}"
         
-      - name: Print Pull Request Status
-        run: echo "Pull request status:${{ github.event.pull_request.status }}"
+      - name: Print Pull Request Status, github.event.pull_request.status
+        run: echo "${{ github.event.pull_request.status }}"
         
-      - name: Print Triggering Branch
-        run: echo "Triggering branch:${{ github.ref }}"
+      - name: Print Triggering Branch, github.ref
+        run: echo "${{ github.ref }}"
 
-      - name: Print Repository Name
-        run: echo "Repository name:${{ github.repository }}"
-         echo "Repository name:${{ github.event.repository.full_name }}"
-        
-      - name: Print Source Repository
-        run: echo "Source repository:${{ github.event.pull_request.head.label }}"
+      - name: Print Repository Name, github.repository
+        run: echo "${{ github.repository }}"
 
-      - name: Print Destination(base) Repository
-        run: echo "Destination repository:${{ github.event.pull_request.base.label }}"
+        
+      - name: Print Source Branch, github.event.pull_request.head.label
+        run: echo "${{ github.event.pull_request.head.label }}"
+
+      - name: Print Destination(base) branch, github.event.pull_request.base.label
+        run: echo "${{ github.event.pull_request.base.label }}"
 
       - name: PR object
         run: echo "Pull Request Object:${{ toJson(github.event.pull_request) }}"
