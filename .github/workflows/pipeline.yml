@@ -1,9 +1,13 @@
 name: Deployment CI Pipeline
 on:
   push:
-    branches: main
+    branches:
+     - manin
+     #- '*'
   pull_request:
-    branches: [main]
+    branches: [main] #Specifies that the workflow should be triggered only when 
+    #the base branch of the pull request is main. This means that the pull request 
+    #must be merging changes into the main branch for the workflow to be triggered.
     types: [opened, synchronize]
 jobs:
   deploy-for-testing:
