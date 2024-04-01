@@ -25,7 +25,7 @@ jobs:
       run: yarn
 
     - name: check style
-      run: yarn esgitlint
+      run: yarn eslint
 
     - name: build production
       run: yarn build
