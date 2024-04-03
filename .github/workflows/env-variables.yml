@@ -30,10 +30,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
     - name: Bump version and push tag
+      id: step1
       uses: anothrNick/github-tag-action@1.67.0 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
         WITH_V: true #use v letter
         DRY_RUN: true #
     - name: Bumping result
-      run: echo ${{steps}} #echo ${{new_tag}}, ${{tag}}, ${{part}}        
+      run: echo ${{steps.step1.outputs}} #echo ${{new_tag}}, ${{tag}}, ${{part}}        
