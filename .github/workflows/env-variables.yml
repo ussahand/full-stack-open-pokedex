@@ -35,6 +35,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
         WITH_V: true #use v letter
-        DRY_RUN: true #
+        DRY_RUN: true
     - name: Bumping result
-      run: echo ${{steps.step1.outputs}} #echo ${{new_tag}}, ${{tag}}, ${{part}}        
+      run: echo ${{steps.step1.outputs.tag}}      
