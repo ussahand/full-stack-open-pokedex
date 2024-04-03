@@ -35,5 +35,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
         WITH_V: true #use v letter
         DRY_RUN: true #
-    - name: Bumping result ${{outputs.new_tag}}
+    - name: Bumping result ${{Outputs.new_tag}}
       run: echo ${{new_tag}}, ${{tag}}, ${{part}}        
