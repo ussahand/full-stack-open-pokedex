@@ -37,4 +37,4 @@ jobs:
         WITH_V: true #use v letter
         DRY_RUN: true
     - name: Bumping result
-      run: echo ${{steps.step1.outputs.tag}}      
+      run: echo hi: ${{steps.step1.outputs.tag}}      
