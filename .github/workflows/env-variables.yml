@@ -40,7 +40,7 @@ jobs:
         WITH_V: true
         #DRY_RUN: true
         #DEFAULT_BUMP: patch
-        #VERBOSE: true
+        #VERBOSE: true 0
     - name: Vrsion Bumping result 
       run: |
         echo "old tag = ${{steps.step1.outputs.tag}}"
