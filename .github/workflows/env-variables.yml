@@ -41,13 +41,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         WITH_V: true
-        #DRY_RUN: true
+        DRY_RUN: true
         DEFAULT_BUMP: patch
         #VERBOSE: true 0
     - name: Vrsion Bumping result 
       run: |
-        echo "old tag = ${{steps.step1.outputs.tag}}"
+        echo "old tag = ${{steps.step1.outputs.old_tag}}"
         echo "new tag = ${{steps.step1.outputs.new_tag}}"
+        echo "tag = ${{steps.step1.outputs.tag}}"
         echo "bumped part = ${{steps.step1.outputs.part}}"
         echo "obj = ${{ toJson(steps.step1.outputs)}}"
         
