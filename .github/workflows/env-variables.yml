@@ -37,16 +37,18 @@ jobs:
         fetch-depth: '0'
     - name: Bump version and push tag
       id: step1
-      uses: anothrNick/github-tag-action@1.62.0 
+      uses: anothrNick/github-tag-action@1.67.0 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         WITH_V: true
         #DRY_RUN: true
-        #DEFAULT_BUMP: patch
+        DEFAULT_BUMP: patch
         #VERBOSE: true 0
     - name: Vrsion Bumping result 
       run: |
         echo "old tag = ${{steps.step1.outputs.tag}}"
         echo "new tag = ${{steps.step1.outputs.new_tag}}"
         echo "bumped part = ${{steps.step1.outputs.part}}"
+        echo "obj = ${{ toJson(steps.step1.outputs)}}"
+        
         ls -la
