@@ -43,7 +43,7 @@ jobs:
         VERBOSE: true
     - name: Bumping result
       run: |
-        echo hi:${{ toJson(steps.step1.outputs) }}  
-        echo old tag = ${{steps.step1.outputs.tag}}
-        echo new tag = ${{steps.step1.outputs.new_tag}}
-        echo bumped part = ${{steps.step1.outputs.part}}
+        echo "hi:${{ toJson(steps.step1.outputs) }}  "
+        echo "old tag = ${{steps.step1.outputs.tag}}"
+        echo "new tag = ${{steps.step1.outputs.new_tag}}"
+        echo "bumped part = ${{steps.step1.outputs.part}}"
