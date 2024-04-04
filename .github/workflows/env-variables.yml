@@ -31,6 +31,8 @@ jobs:
   tag_release:
     needs: [print-variables]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - name: Bump version and push tag
       id: step1
