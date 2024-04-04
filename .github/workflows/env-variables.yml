@@ -36,7 +36,8 @@ jobs:
       id: step1
       uses: anothrNick/github-tag-action@1.62.0 
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        DRY_RUN: true
         VERBOSE: true
-    #- name: Bumping result
-      #run: echo hi:${{steps.step1.outputs.tag}}      
+    - name: Bumping result
+      run: echo hi:${{steps.step1.outputs.tag}}      
