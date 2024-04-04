@@ -38,6 +38,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         DRY_RUN: true
+        WITH_V: true
         VERBOSE: true
     - name: Bumping result
-      run: echo hi:${{steps.step1.outputs.tag}}      
+      run: |
+        echo hi:${{steps.step1.outputs}}  
+        echo old tag = ${{steps.step1.outputs.tag}}
+        echo new tag = ${{steps.step1.outputs.new_tag}}
+        echo bumped part = ${{steps.step1.outputs.part}}
