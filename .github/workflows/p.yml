@@ -1,0 +1,73 @@
+name: Deployment CI Pipeline
+on:
+  push:
+    branches:
+     - manin
+     #- '*'
+  pull_request:
+    branches: [main] #Specifies that the workflow should be triggered only when 
+    #the base branch of the pull request is main. This means that the pull request 
+    #must be merging changes into the main branch for the workflow to be triggered.
+    types: [opened, synchronize]
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "16"
+
+    - name: Install dependencies
+      run: yarn
+
+    - name: check style
+      run: yarn eslint
+
+    - name: build production
+      run: yarn build
+
+    - name: run tests
+      run: yarn test
+
+    - name: e2e tests
+      uses: cypress-io/github-action@v5
+      with:
+        command: yarn test:e2e
+        start: yarn start-prod
+        wait-on: http://localhost:5000        
+
+    - name: Prepare Fly.io
+      #This action installs and configures the flyctl command-line tool, which is used to interact with Fly.io.
+      if: ${{ github.event_name == 'push' }}
+      uses: superfly/flyctl-actions/setup-flyctl@master
+
+    - name: Deploy to Fly.io
+      if: ${{ github.event_name == 'push' }}
+      run: flyctl deploy --remote-only --config fly.toml --env "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
+      env:
+        #allowing flyctl to authenticate with your Fly.io account.
+        FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}       
+  tag_release:
+    needs: [simple_deployment_pipeline]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Bump version and push tag
+      id: step1
+      uses: anothrNick/github-tag-action@1.67.0 
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        WITH_V: true
+        DEFAULT_BUMP: patch
+        #DRY_RUN: true
+        #VERBOSE: true 0
+    - name: Vrsion Bumping result 
+      run: |
+        echo "old tag = ${{steps.step1.outputs.old_tag}}"
+        echo "new tag = ${{steps.step1.outputs.new_tag}}"
+        echo "tag = ${{steps.step1.outputs.tag}}"
+        echo "bumped part = ${{steps.step1.outputs.part}}"
