@@ -49,6 +49,7 @@ jobs:
       env:
         #allowing flyctl to authenticate with your Fly.io account.
         FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}       
+        
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-latest
