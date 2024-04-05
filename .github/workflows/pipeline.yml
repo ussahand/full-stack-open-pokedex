@@ -1,13 +1,10 @@
 name: Deployment CI Pipeline
+
 on:
   push:
-    branches:
-     - manin
-     #- '*'
+    branches: main
   pull_request:
-    branches: [main] #Specifies that the workflow should be triggered only when 
-    #the base branch of the pull request is main. This means that the pull request 
-    #must be merging changes into the main branch for the workflow to be triggered.
+    branches: [main]
     types: [opened, synchronize]
 jobs:
   simple_deployment_pipeline:
