@@ -29,6 +29,6 @@ jobs:
         run: echo "$msg-str"
 
       - name: skip or not
-        if:${{ contains(msg-str, 'skip') }}
+        #if: ${{ contains(msg-str, 'skip') }}
         #if: ${{ contains(COMMIT_MESSAGES, 'skip') }}
         run: echo "Yes this skipped"  
