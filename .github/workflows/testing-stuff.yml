@@ -25,7 +25,7 @@ jobs:
 
       - name: commit messages string
         env: 
-          msg_str: ${{join(github.event.commits.*.message, ' ')}}
+          msg_str: ${{join(github.event.commits.*.message, 'opop')}}
         run: echo "$msg_str"
 
       - name: skip or not
