@@ -30,6 +30,6 @@ jobs:
 
       - name: skip or not
         if: ${{ contains(github.event.commits.*.message, 'skip')  }}
-        #if: ${{ contains(msg_str, 'skip') }}
+        #if: ${{ contains(msg_str, 'skipp') }}
         #if: ${{ contains(COMMIT_MESSAGES, 'skip') }}
         run: echo "Yes this skipped"  
