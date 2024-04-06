@@ -26,10 +26,14 @@ jobs:
       - name: join commit messages
         id: jcm
         env: 
-          msg0: ${{join(github.event.commits.*.message, ',') }}
-          msg1: ${{ regex_replace(env.msg0, '\n', ',') }}
+          msg0: ${{ github.event.commits.*.message }}
+          msg1: ${{ toJson($msg0) }}
+          msg2: ${{ $msg1[0] }}
         run: |
+         echo "Joined commit messages:$msg0"
          echo "Joined commit messages:$msg1"
+         echo "Joined commit messages:$msg2"
+
          #echo "::set-output name=msg::$msg1" 
 
       - name: Should Skip
