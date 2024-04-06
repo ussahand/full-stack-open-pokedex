@@ -26,8 +26,10 @@ jobs:
       - name: Join commit messages
         id: st1
         env: 
-          msg: ${{join(github.event.commits.*.message, ',')}}
-        run: echo "Joined commit messages:$msg"
+          msg1: ${{join(github.event.commits.*.message, ',')}}
+        run: |
+         echo "Joined commit messages:$msg1"
+         echo "::set-output name=msg::$msg1"
 
       - name: Should Skip
         env:
