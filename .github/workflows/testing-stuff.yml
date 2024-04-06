@@ -23,11 +23,15 @@ jobs:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
 
-      - name: commit messages string
+      - name: Join commit messages
         env: 
-          msg_str: ${{join(github.event.commits.*.message, ',')}}
-          should_skip: ${{ contains(msg_str, 'skip')  }}
-        run: echo "$msg_str:$should_skip"
+          msg: ${{join(github.event.commits.*.message, ',')}}
+        run: echo "Joined commit messages:$msg"
+
+      - name: Should Skip
+        env:
+          should_skip: ${{ contains(steps.Join_commit_messages.outputs.msg, 'skip') }}
+        run: echo "$should_skip"
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
         #run:  echo "skipp found"  
 
