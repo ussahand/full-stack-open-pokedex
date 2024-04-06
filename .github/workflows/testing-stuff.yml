@@ -26,9 +26,10 @@ jobs:
       - name: commit messages string
         env: 
           msg_str: ${{join(github.event.commits.*.message, ',')}}
-        run: echo "$msg_str"
-        if: ${{ contains(github.event.commits.*.message, 'skip')  }}
-        run:  echo "skipp found"  
+          should_skip = ${{ contains($msg_str, 'skip')  }}
+        run: echo "$msg_str:$should_skip"
+        #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
+        #run:  echo "skipp found"  
 
       - name: skip or not
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
@@ -38,11 +39,3 @@ jobs:
          echo "Yes this skipped"  
          echo "hello $msg_str"
          echo $msg_str
-
-      - name: commit messages string
-        env: 
-          msg_str: ${{join(github.event.commits.*.message, 'opop')}}
-        run: echo "$msg_str"
-
-      - name: print
-        run: echo  "hello $msg_str"
