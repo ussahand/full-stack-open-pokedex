@@ -23,8 +23,8 @@ jobs:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
 
-      - name: Join commit messages
-        id: st1
+      - name: join commit messages
+        id: jcm
         env: 
           msg1: ${{join(github.event.commits.*.message, ',')}}
         run: |
@@ -33,8 +33,8 @@ jobs:
 
       - name: Should Skip
         env:
-          should_skip: ${{ contains(steps.st1.outputs.msg, 'skip') }}
-        run: echo "$should_skip, ${{toJson(steps.st1.outputs)}}"
+          should_skip: ${{ contains(steps.jcm.outputs.msg, 'skip') }}
+        run: echo "$should_skip, ${{toJson(steps.jcm.outputs.msg)}}"
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
         #run:  echo "skipp found"  
 
