@@ -26,7 +26,7 @@ jobs:
       - name: join commit messages
         id: jcm
         env: 
-          msg0: ${{ toJson(github.event.commits.*.message) }}
+          msg0: $(echo "${{ toJson(github.event.commits.*.message) }}" )
           msg1: ${{ join(github.event.commits.*.message, '-') }}
           msg2: ${{ join(toJson(github.event.commits.*.message), ',')  }}
         run: |
