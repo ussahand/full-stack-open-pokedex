@@ -33,3 +33,6 @@ jobs:
         #if: ${{ contains(msg_str, 'skipp') }}
         #if: ${{ contains(COMMIT_MESSAGES, 'skip') }}
         run: echo "Yes this skipped"  
+        run: echo "hello $msg_str"
+        run: echo $msg_str
+        
