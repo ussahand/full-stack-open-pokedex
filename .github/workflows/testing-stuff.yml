@@ -28,7 +28,7 @@ jobs:
         env: 
           msg0: ${{ toJson(github.event.commits.*.message) }}
           msg1: ${{ join(github.event.commits.*.message, '-') }}
-          msg2: ${{ fromJson( toJson(github.event.commits.*.message) ) }}
+          msg2: ${{ join(toJson(github.event.commits.*.message), ',')  }}
         run: |
          echo "Joined commit messages:$msg0"
          echo "Joined commit messages:$msg1"
