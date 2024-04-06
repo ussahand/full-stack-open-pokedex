@@ -30,9 +30,9 @@ jobs:
           msg1: ${{ join(github.event.commits.*.message, '-') }}
           msg2: ${{ join(toJson(github.event.commits.*.message), ',')  }}
         #run: |
-         echo "Joined commit messages:$msg0"
-         echo "Joined commit messages:$msg1"
-         echo "Joined commit messages:$msg2"
+          echo "Joined commit messages:$msg0"
+          echo "Joined commit messages:$msg1"
+          echo "Joined commit messages:$msg2"
 
          #echo "::set-output name=msg::$msg1" 
 
