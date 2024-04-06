@@ -29,10 +29,10 @@ jobs:
         run: echo "$msg_str"
 
       - name: skip or not
-        if: ${{ contains(github.event.commits.*.message, 'skip')  }}
+        #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
         #if: ${{ contains(msg_str, 'skipp') }}
         #if: ${{ contains(COMMIT_MESSAGES, 'skip') }}
-        run: echo "Yes this skipped"  
-        run: echo "hello $msg_str"
-        run: echo $msg_str
-        
+        run: |
+         echo "Yes this skipped"  
+         echo "hello $msg_str"
+         echo $msg_str
