@@ -26,10 +26,10 @@ jobs:
       - name: join commit messages
         id: jcm
         env: 
-          msg1: ${{join(toJson(github.event.commits.*.message), ',')}}
+          msg1: ${{join(github.event.commits.*.message, ',')}}
         run: |
          echo "Joined commit messages:$msg1"
-         #echo "msg=$msg1" >> $GITHUB_OUTPUT
+         #echo "msg=$msg1<<EOF" >> $GITHUB_OUTPUT
 
       - name: Should Skip
         env:
