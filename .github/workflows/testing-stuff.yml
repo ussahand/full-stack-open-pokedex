@@ -26,7 +26,7 @@ jobs:
       - name: join commit messages
         id: jcm
         env: 
-          msg1: ${{join(github.event.commits.*.message, ',')}}
+          msg1: ${{contains(join(github.event.commits.*.message, ','), 'skip') }}
         run: |
          echo "Joined commit messages:$msg1"
          #echo "::set-output name=msg::$msg1"
