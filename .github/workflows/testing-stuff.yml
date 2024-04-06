@@ -27,8 +27,8 @@ jobs:
         id: jcm
         env: 
           msg0: ${{ toJson(github.event.commits.*.message) }}
+          msg1: ${{ env.msg0[0] }}
           #msg1: ${{ toJson(env.msg0) }}
-          #msg2: ${{ env.msg1[0] }}
         run: |
          echo "Joined commit messages:$msg0"
          echo "Joined commit messages:$msg1"
