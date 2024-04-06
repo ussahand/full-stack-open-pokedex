@@ -28,7 +28,7 @@ jobs:
         env: 
           msg1: ${{contains(join(github.event.commits.*.message, ','), 'skip') }}
         run: |
-         echo "Joined commit messages:$msg1"
+         echo "Joined commit messages:$msg1 "
          #echo "::set-output name=msg::$msg1"
 
       - name: Should Skip
