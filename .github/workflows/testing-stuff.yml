@@ -26,8 +26,8 @@ jobs:
       - name: join commit messages
         id: jcm
         env: 
-          msg1: ${{join(github.event.commits.*.message, ',') }}
-          msg1: ${{ regex_replace(env.msg1, '\n', ',') }}
+          msg0: ${{join(github.event.commits.*.message, ',') }}
+          msg1: ${{ regex_replace(env.msg0, '\n', ',') }}
         run: |
          echo "Joined commit messages:$msg1"
          #echo "::set-output name=msg::$msg1" 
