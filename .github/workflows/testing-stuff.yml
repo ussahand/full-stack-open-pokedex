@@ -24,6 +24,7 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
 
       - name: Join commit messages
+        id: Join_commit_messages
         env: 
           msg: ${{join(github.event.commits.*.message, ',')}}
         run: echo "Joined commit messages:$msg"
@@ -31,7 +32,7 @@ jobs:
       - name: Should Skip
         env:
           should_skip: ${{ contains(steps.Join_commit_messages.outputs.msg, 'skip') }}
-        run: echo "$should_skip, $steps.Join_commit_messages.outputs.msg"
+        run: echo "$should_skip, $(steps.Join_commit_messages.outputs.msg)"
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
         #run:  echo "skipp found"  
 
