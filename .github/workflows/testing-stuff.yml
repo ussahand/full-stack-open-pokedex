@@ -26,10 +26,10 @@ jobs:
       - name: join commit messages
         id: jcm
         env: 
-          msg1: ${{contains(join(github.event.commits.*.message, ','), 'skip') }}
+          msg1: ${{join(github.event.commits.*.message, ',') | replace('\n', ',') }}
         run: |
-         echo "Joined commit messages:$msg1 "
-         #echo "::set-output name=msg::$msg1"
+         echo "Joined commit messages:$msg1"
+         #echo "::set-output name=msg::$msg1" 
 
       - name: Should Skip
         env:
