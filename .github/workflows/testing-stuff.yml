@@ -29,7 +29,7 @@ jobs:
           msg1: ${{join(github.event.commits.*.message, ',')}}
         run: |
          echo "Joined commit messages:$msg1"
-         #echo "msg=$msg1<<EOF" >> $GITHUB_OUTPUT
+         #echo "::set-output name=msg::$msg1"
 
       - name: Should Skip
         env:
