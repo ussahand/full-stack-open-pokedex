@@ -32,7 +32,7 @@ jobs:
       - name: Should Skip
         env:
           should_skip: ${{ contains(steps.st1.outputs.msg, 'skip') }}
-        run: echo "$should_skip, ${{steps.st1.outputs}}"
+        run: echo "$should_skip, ${{steps.st1.outputs.msg}}"
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
         #run:  echo "skipp found"  
 
