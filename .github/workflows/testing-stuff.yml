@@ -30,11 +30,13 @@ jobs:
           echo "Joined commit messages: $msg0"
           echo "Joined commit messages: $msg1"
           echo "::set-output name=msg::$msg1" 
+          echo "new_msg=$msg1"
 
       - name: Should Skip
         env:
           should_skip: ${{ contains(steps.jcm.outputs.msg, 'skip') }}
         run: echo "$should_skip, ${{steps.jcm.outputs.msg}}"
+        run: echo "$should_skip, $new_msg"
         #run: echo 'HI ${{toJson(env)}}'
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
         #run:  echo "skipp found"  
