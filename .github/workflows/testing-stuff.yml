@@ -45,5 +45,5 @@ jobs:
           echo "$no_skip, $new_msg"
       
       - name: skip 2
-        if: ${{ contains(github.event.commits.*.message, 'skip') }}
-        run: echo "skippppp"
+        if: ${{ !contains(github.event.commits.*.message, 'skip') }}
+        run: echo "no skippppp"
