@@ -30,13 +30,15 @@ jobs:
           msg1=$(echo "$msg0" | tr '\n' ',')
           echo "Joined commit messages: $msg0"
           echo "Joined commit messages: $msg1"
-          echo "msg=$msg1" >> $GITHUB_OUTPUT #depricated format is in next line
+          echo "msg=$msg1" >> $GITHUB_OUTPUT #depricated env var def is in next line
           # echo "::set-output name=msg::$msg1"
+
+          #def a GitHub env and you can access it without step hirarchy
           echo "new_msg=$msg1"  >> $GITHUB_ENV
 
-      - name: Should Skip
+      - name: Should Skip or not
         env:
-          no_skip: ${{ ! contains(steps.jcm.outputs.msg, 'skip') }}
+          no_skip: ${{ ! contains(steps.jcm.outputs.msg, '#skip') }}
           #remember the no_skip value is string literal and not a boolean
           #so its contain 'true' or 'false' and not true or false
         if: ${{ env.no_skip == 'true' }}
@@ -45,5 +47,5 @@ jobs:
           echo "$no_skip, $new_msg"
       
       - name: skip 2
-        if: ${{ !contains(toJson(github.event.commits.*.message), 'skip') }}
+        if: ${{ !contains(toJson(github.event.commits.*.message), '#skip') }}
         run: echo "no  skippppp"
