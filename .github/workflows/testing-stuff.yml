@@ -30,8 +30,8 @@ jobs:
           msg1=$(echo "$msg0" | tr '\n' ',')
           echo "Joined commit messages: $msg0"
           echo "Joined commit messages: $msg1"
-          echo "msg=$msg1" >> $GITHUM_OUTPUT
-          #echo "::set-output name=msg::$msg1"
+          echo "msg=$msg1" >> $GITHUB_OUTPUT
+          # echo "::set-output name=msg::$msg1"
           echo "new_msg=$msg1"  >> $GITHUB_ENV
 
       - name: Should Skip
