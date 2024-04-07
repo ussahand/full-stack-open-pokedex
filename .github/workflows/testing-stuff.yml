@@ -48,4 +48,4 @@ jobs:
       
       - name: skip 2
         if: ${{ !contains(toJson(github.event.commits.*.message), '#skip') }}
-        run: echo "no  skippppp"
+        run: echo "no skippppp"
