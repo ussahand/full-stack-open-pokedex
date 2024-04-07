@@ -30,13 +30,14 @@ jobs:
           msg1=$(echo "$msg0" | tr '\n' ',')
           echo "Joined commit messages: $msg0"
           echo "Joined commit messages: $msg1"
-          echo "msg=$msg1" >> $GITHUB_OUTPUT
+          echo "msg=$msg1" >> $GITHUB_OUTPUT #depricated format is in next line
           # echo "::set-output name=msg::$msg1"
           echo "new_msg=$msg1"  >> $GITHUB_ENV
 
       - name: Should Skip
         env:
           should_skip: ${{ contains(steps.jcm.outputs.msg, 'skip') }}
+        if: ${{ should_skip }}
         run: |
           echo "$should_skip, ${{steps.jcm.outputs.msg}}"
           echo "$should_skip, $new_msg"
