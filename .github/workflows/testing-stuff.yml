@@ -37,7 +37,7 @@ jobs:
       - name: Should Skip
         env:
           should_skip: ${{ contains(steps.jcm.outputs.msg, 'skip') }}
-        if: ${{ env.should_skip != true }}
+        if: ${{ should_skip != true }}
         run: |
           echo "$should_skip, ${{steps.jcm.outputs.msg}}"
           echo "$should_skip, $new_msg"
