@@ -43,7 +43,7 @@ jobs:
           echo "$should_skip, $new_msg"
         #run:  echo 'HI ${{toJson(env)}}'
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
-        #run:  echo "skipp found"  
+        #run: echo "skipp found"  
 
       - name: skip or not
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
