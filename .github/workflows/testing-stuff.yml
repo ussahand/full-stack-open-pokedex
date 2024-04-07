@@ -24,8 +24,9 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: join commit messages
         id: jcm
+        env:
+          msg0: ${{ join(github.event.commits.*.message, ',') }}
         run: |
-          msg0=$(echo "${{ join(github.event.commits.*.message, '+') }}")
           msg1=$(echo "$msg0" | tr '\n' ',')
           echo "Joined commit messages: $msg0"
           echo "Joined commit messages: $msg1"
