@@ -36,20 +36,14 @@ jobs:
 
       - name: Should Skip
         env:
-          should_skip: ${{ ! contains(steps.jcm.outputs.msg, 'skip') }}
-        if: ${{ env.should_skip }}
+          no_skip: ${{ ! contains(steps.jcm.outputs.msg, 'skip') }}
+          #remember the no_skip value is string literal and not a boolean
+          #so its contain 'true' or 'false' and not true or false
+        if: ${{ env.no_skip == 'true' }}
         run: |
-          echo "$should_skip, ${{steps.jcm.outputs.msg}} ,  ${{ env.should_skip }}"
-          echo "$should_skip, $new_msg"
-        #run:  echo 'HI ${{toJson(env)}}'
-        #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
-        #run: echo "skipp found"  
-
-      - name: skip or not
-        #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
-        #if: ${{ contains(msg_str, 'skipp') }}
-        #if: ${{ contains(COMMIT_MESSAGES, 'skip') }}
-        run: |
-         echo "Yes this skipped "  
-         echo "hello $msg_str"
-         echo $msg_str
+          echo "$no_skip, ${{steps.jcm.outputs.msg}} ,  ${{ env.no_skip }}"
+          echo "$no_skip, $new_msg"
+      
+      - name: skip 2
+        if: ${{ contains(github.event.commits.*.message, 'skip') }}
+        run: echo "skippppp"
