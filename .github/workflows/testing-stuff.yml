@@ -26,7 +26,7 @@ jobs:
         id: jcm
         run: |
           msg0=$(echo "${{ toJson(github.event.commits.*.message) }}")
-          msg1=$(echo "$msg0" | tr '\n' '-')
+          msg1=$(echo "$msg0" | tr '\n' '')
           echo "Joined commit messages: $msg0"
           echo "Joined commit messages: $msg1"
 
