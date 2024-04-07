@@ -39,7 +39,7 @@ jobs:
           should_skip: ${{ contains(steps.jcm.outputs.msg, 'skip') }}
         #if: ${{ !env.should_skip }}
         run: |
-          echo "$should_skip, ${{steps.jcm.outputs.msg}} ,  ${{ env.should_skip }}"
+          echo "$should_skip, ${{steps.jcm.outputs.msg}} ,  ${{ !env.should_skip }}"
           echo "$should_skip, $new_msg"
         #run:  echo 'HI ${{toJson(env)}}'
         #if: ${{ contains(github.event.commits.*.message, 'skip')  }}
