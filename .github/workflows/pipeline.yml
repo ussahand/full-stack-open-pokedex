@@ -46,7 +46,7 @@ jobs:
       uses: superfly/flyctl-actions/setup-flyctl@master
 
     - name: Deploy to Fly.io
-      if: ${{ github.event_name == 'push' && $skip_msg != 'true'}}
+      if: ${{ github.event_name == 'push' && env.skip_msg != 'true'}}
       run: flyctl deploy --remote-only --config fly.toml --env "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
       env:
         #allowing flyctl to authenticate with your Fly.io account.
@@ -54,8 +54,8 @@ jobs:
 
   tag_release:
     needs: [simple_deployment_pipeline]
-    if: ${{ skip_msg != 'true' }}
     runs-on: ubuntu-latest
+    if: ${{ env.skip_msg != 'true' }}
     steps:
     - uses: actions/checkout@v4
     - name: Bump version and push tag
