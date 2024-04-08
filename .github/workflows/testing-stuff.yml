@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - main
-
+env:
+  gmsg: ${{ join(github.event.commits.*.message, ',') }}
 jobs:
   a_test_job:
     runs-on: ubuntu-20.04
@@ -49,3 +50,6 @@ jobs:
       - name: skip 2
         if: ${{ !contains(toJson(github.event.commits.*.message), '#skip') }}
         run: echo "no skippppp"
+
+      - name: global message
+        run: echo "$gmsg"
