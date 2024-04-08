@@ -46,7 +46,7 @@ jobs:
       uses: superfly/flyctl-actions/setup-flyctl@master
 
     - name: Deploy to Fly.io
-      if: ${{ github.event_name == 'push' && skip_msg != 'true'}}
+      if: ${{ github.event_name == 'push' && $skip_msg != 'true'}}
       run: flyctl deploy --remote-only --config fly.toml --env "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
       env:
         #allowing flyctl to authenticate with your Fly.io account.
