@@ -54,9 +54,11 @@ jobs:
 
   tag_release:
     needs: [simple_deployment_pipeline]
-    if: ${{ env.skip_msg != 'true' }}
+    #if: ${{ env.skip_msg != 'true' }}
     runs-on: ubuntu-latest
     steps:
+    - name: print commit message
+      run: echo "${{ env.skip_msg }}"
     - uses: actions/checkout@v4
     - name: Bump version and push tag
       id: step1
