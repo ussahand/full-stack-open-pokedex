@@ -69,7 +69,7 @@ jobs:
         WITH_V: true
         DEFAULT_BUMP: patch
         #DRY_RUN: true
-        #VERBOSE: true 0
+        #VERBOSE:  true 0
  
     - name: Vrsion Bumping result 
       run: |
