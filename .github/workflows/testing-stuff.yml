@@ -52,7 +52,7 @@ jobs:
         run: echo "no skippppp"
 
       - name: global message
-        run: echo "$gmsg"
+        run: echo "$gmsg, ${{ secrets.DISCORD_WEBHOOK }}"
       # - name: Test Success
       #     uses: rjstone/discord-webhook-notify@v1.0.4
       #     if: success()
@@ -60,10 +60,10 @@ jobs:
       #         severity: info
       #         details: Test Succeeded!
               #webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      - name: Test Failure
-          uses: redstone/discord-webhook-notify@v1
-          if: failure()
-          with:
-              severity: error
-              details: Test Failed!
-              webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
+      # - name: Test Failure
+      #     uses: redstone/discord-webhook-notify@v1
+      #     if: failure()
+      #     with:
+      #         severity: error
+      #         details: Test Failed!
+      #         webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
