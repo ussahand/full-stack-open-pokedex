@@ -60,8 +60,8 @@ jobs:
       #         severity: info
       #         details: Test Succeeded!
               #webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      - name: Test Failure
-          uses: redstone/discord-webhook-notify@v1
+      # - name: Test Failure
+      #     uses: redstone/discord-webhook-notify@v1
       #     if: failure()
       #     with:
       #         severity: error
