@@ -13,6 +13,7 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-latest
 
+    if: ${{ github.event_name == 'push' && env.skip_msg != 'true'}}
     steps:
     - uses: actions/checkout@v4
     
