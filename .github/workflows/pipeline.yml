@@ -71,7 +71,7 @@ jobs:
         #DRY_RUN: true
         #VERBOSE:  true 0
  
-    - name: Vrsion Bumping result
+    - name: Vrsion Bumping result 
       run: |
         echo "old tag = ${{steps.step1.outputs.old_tag}}"
         echo "new tag = ${{steps.step1.outputs.new_tag}}"
