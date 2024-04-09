@@ -1,9 +1,9 @@
 name: Testing stuff
 
 on:
-  push: *
-    #branches:
-      #- main
+  push:
+    branches:
+      - cicd
 env:
   gmsg: ${{ join(github.event.commits.*.message, ',') }}
 jobs:
