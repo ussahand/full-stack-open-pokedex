@@ -57,7 +57,9 @@ jobs:
     steps:
     - name: print commit message
       run: echo "${{ env.skip_msg }}"
+
     - uses: actions/checkout@v4
+
     - name: Bump version and push tag
       id: step1
       if: ${{ env.skip_msg != 'true' }}
@@ -68,6 +70,7 @@ jobs:
         DEFAULT_BUMP: patch
         #DRY_RUN: true
         #VERBOSE: true 0
+ 
     - name: Vrsion Bumping result 
       run: |
         echo "old tag = ${{steps.step1.outputs.old_tag}}"
