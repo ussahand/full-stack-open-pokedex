@@ -12,7 +12,6 @@ env:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-latest
-    if: ${{ env.skip_msg != 'true'}}
     steps:
     - uses: actions/checkout@v4
     
@@ -54,7 +53,6 @@ jobs:
 
   tag_release:
     needs: [simple_deployment_pipeline]
-    #if: ${{ env.skip_msg != 'true' }}
     runs-on: ubuntu-latest
     steps:
     - name: print commit message
@@ -62,6 +60,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Bump version and push tag
       id: step1
+      if: ${{ env.skip_msg != 'true' }}
       uses: anothrNick/github-tag-action@1.67.0 
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
