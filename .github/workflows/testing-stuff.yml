@@ -55,7 +55,7 @@ jobs:
         run: echo "$gmsg"
 
       - name: Test Success
-          uses: rjstone/discord-webhook-notify@v1
+          uses: rjstone/discord-webhook-notify@v1.0.4
           if: success()
           with:
               severity: info
