@@ -52,7 +52,7 @@ jobs:
         run: echo "no skippppp"
 
       - name: global message
-        run: echo "$gmsg, ${{ msg }}"
+        run: echo "$gmsg,  msg "
 
       - name: Test Success
         uses: rjstone/discord-webhook-notify@v1.0.4

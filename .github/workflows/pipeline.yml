@@ -26,6 +26,15 @@ jobs:
     - name: check style
       run: yarn eslint
 
+      - name: Test Failure
+        if: failure()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+              severity: error
+              details: Test Failed!
+              webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
+
+
     - name: build production
       run: yarn build
 
