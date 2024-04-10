@@ -77,8 +77,8 @@ jobs:
         with:
           severity: info
           details: "workflow successfully passed:  ${{ env.running_step }}."
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+          # webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
 
       - name: linux Test Error
         if: failure()
@@ -86,8 +86,8 @@ jobs:
         with:
           severity: error
           details: "workflow failed in the last step: ${{ env.running_step }}."
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+          # webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
 
 
   tag_release:
