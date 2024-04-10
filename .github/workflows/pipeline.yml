@@ -69,15 +69,16 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: info
-          details: lint, build, test wass successfull. skip is:${{env.skip_msg}}
+          details: "workflow successfully passed:  ${{ env.running_step }}"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: linux Test Error
         if: failure()
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: error
-          details: workflow failed in the last step: ${{ env.running_step }}.
+          details: "workflow failed in the last step: ${{ env.running_step }}."
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
 
   tag_release:
     needs: [simple_deployment_pipeline]
