@@ -28,7 +28,7 @@ jobs:
 
       - name: check style
         run: |
-          echo "running_step=eslint" >> $GITHUB_ENV
+          echo "running_step=$running_step eslint" >> $GITHUB_ENV
           yarn eslint
 
       - name: build production
