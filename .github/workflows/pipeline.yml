@@ -23,12 +23,12 @@ jobs:
 
       - name: Install dependencies
         run: | 
-          echo "running_step=dependecies install" >> $GITHUB_ENV
+          echo "running_step=dependecies \ninstall" >> $GITHUB_ENV
           yarn
 
       - name: check style
         run: |
-          echo "running_step=$running_step, eslint" >> $GITHUB_ENV
+          echo "running_step=$running_step, \neslint" >> $GITHUB_ENV
           yarn eslint
 
       - name: build production
