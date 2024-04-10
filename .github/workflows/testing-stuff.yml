@@ -62,9 +62,9 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Test Success
-          uses: rjstone/discord-webhook-notify@v1.0.4
+        uses: rjstone/discord-webhook-notify@v1.0.4
           # if: success()
-          with:
+        with:
               severity: info
               details: Test Succeeded!
               webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
