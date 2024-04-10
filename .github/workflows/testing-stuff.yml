@@ -59,21 +59,21 @@ jobs:
     runs-on:  ubuntu-latest
     name: linux Test Job
     steps:
-    - name: Step 2
-      run: exit 1  # This step fails
-       continue-on-error: true        
-    - name: linux Test Info
-      if: success()
-      uses: rjstone/discord-webhook-notify@v1
-      with:
-        severity: info
-        details: test succeeded.
-        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-    - name: linux Test Error
-      if: failure()
-      uses: rjstone/discord-webhook-notify@v1
-      with:
-        severity: error
-        details: test error.
-        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Step 2
+        run: exit 1  # This step fails
+        continue-on-error: true        
+      - name: linux Test Info
+        if: success()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: test succeeded.
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: linux Test Error
+        if: failure()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          details: test error.
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
    
