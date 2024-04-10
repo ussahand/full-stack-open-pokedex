@@ -6,6 +6,7 @@ on:
       - main
 env:
   gmsg: ${{ join(github.event.commits.*.message, ',') }}
+  gvar: '1'
 jobs:
   a_test_job:
     runs-on: ubuntu-20.04
@@ -36,6 +37,7 @@ jobs:
 
           #def a GitHub env and you can access it without step hirarchy
           echo "new_msg=$msg1"  >> $GITHUB_ENV
+          $gvar="rrrrrrrrrr"
 
       - name: Should Skip or not
         env:
