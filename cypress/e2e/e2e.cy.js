@@ -8,7 +8,7 @@ describe('Pokedex', function() {
   it('polemon page can be navigated to', function() {
     cy.visit('http://localhost:5000')
     cy.contains('ivysaur').click()
-    cy.contains('Homet')
+    cy.contains('Home')
     cy.contains('speed')
   })
 })
