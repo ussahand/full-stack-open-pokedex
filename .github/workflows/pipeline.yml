@@ -93,3 +93,13 @@ jobs:
           echo "new tag = ${{steps.step1.outputs.new_tag}}"
           echo "tag = ${{steps.step1.outputs.tag}}"
           echo "bumped part = ${{steps.step1.outputs.part}}"
+  windows_test:
+    runs-on: windows-latest
+    name: Windows Test Job
+    steps:
+    - name: Windows Test Info
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: info
+        details: Test succeeded.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
