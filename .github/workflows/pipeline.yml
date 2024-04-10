@@ -41,15 +41,15 @@ jobs:
           echo "running_step=$running_step, test" >> $GITHUB_ENV
           yarn test
 
+      - name: update steps for e2e test
+        run: echo "running_step=$running_step, cypress e2e test" >> $GITHUB_ENV
+
       - name: e2e tests
         uses: cypress-io/github-action@v5
         with:
           command: yarn test:e2e
           start: yarn start-prod
           wait-on: http://localhost:5000        
-      - name: update steps
-        if: success()
-        run: echo "running_step=$running_step, cypress e2e test" >> $GITHUB_ENV
  
       # - name: Prepare Fly.io
       #   #This action installs and configures the flyctl command-line tool, which is used to interact with Fly.io.

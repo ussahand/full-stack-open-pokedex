@@ -5,7 +5,9 @@ jobs:
     runs-on: windows-latest
     name: Windows Test Job
     steps:
-    - name: Windows Test Info
+      - name: test discord messaging
+        run: echo "discord messaging"
+    # - name: Windows Test Info
   #     uses: rjstone/discord-webhook-notify@v1
   #     with:
   #       severity: info
