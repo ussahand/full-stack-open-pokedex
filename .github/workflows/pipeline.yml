@@ -26,6 +26,8 @@ jobs:
 
       - name: check style
         run: yarn eslint
+        env:
+          running_step: "yanr istall"
 
       - name: build production
         run: yarn build
