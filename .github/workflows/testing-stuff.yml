@@ -15,13 +15,6 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - name: Linux Test Info
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: info
-          details: Test succeeded.
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-
       - name: commits
         env:
           COMMITS: ${{ toJson(github.event.commits) }}
@@ -30,6 +23,13 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: Linux Test Info
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: Test succeeded.
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
       - name: join commit messages
         id: jcm
         env:
