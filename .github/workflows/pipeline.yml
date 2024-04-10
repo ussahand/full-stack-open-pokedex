@@ -26,21 +26,20 @@ jobs:
       - name: check style
         run: yarn eslint
 
-      - name: Test Success
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        if: success()
-        with:
-            severity: info
-            details: Test Succeeded!
-            webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-            
-      - name: Test Failure
-        uses: rjstone/discord-webhook-notify@v1
-        if: ${{ failure() }}
-        with:
-          severity: error
-          details: workflow Failed!
-          webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
+    - name: linux Test Info
+      if: success()
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: info
+        details: workflow succeeded.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+    - name: linux Test Error
+      if: failure()
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: error
+        details: workflow error.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: build production
         run: yarn build
@@ -100,20 +99,20 @@ jobs:
     steps:
     - name: Step 2
       run: exit 1  # This step fails
-      # continue-on-error: true        
+       continue-on-error: true        
     - name: linux Test Info
       if: success()
       uses: rjstone/discord-webhook-notify@v1
       with:
         severity: info
-        details: Test succeeded.
+        details: workflow succeeded.
         webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
     - name: linux Test Error
       if: failure()
       uses: rjstone/discord-webhook-notify@v1
       with:
         severity: error
-        details: Test error.
+        details: workflow error.
         webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 #  windows_test:
