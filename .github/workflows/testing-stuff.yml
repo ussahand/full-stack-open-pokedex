@@ -51,6 +51,9 @@ jobs:
         if: ${{ !contains(toJson(github.event.commits.*.message), '#skip') }}
         run: echo "no skippppp"
 
+      - name: global message
+        run: echo "$gmsg, ${{ secrets.DISCORD_WEBHOOK }}"
+
       - name: Linux Test Info
         uses: rjstone/discord-webhook-notify@v1
         with:
@@ -58,8 +61,6 @@ jobs:
           details: Test succeeded.
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
-      # - name: global message
-      #   run: echo "$gmsg, ${{ secrets.DISCORD_WEBHOOK }}"
       # - name: Test Success
       #     uses: rjstone/discord-webhook-notify@v1.0.4
       #     # if: success()
