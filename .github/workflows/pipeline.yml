@@ -9,6 +9,7 @@ on:
     types: [opened, synchronize]
 env: 
   skip_msg: ${{ contains(toJson(github.event.commits.*.message), '#skip') }}
+  running_step: "not started"
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-latest
@@ -63,7 +64,7 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: error
-          details: workflow failed in .
+          details: workflow failed in ${{ env.running_step }}.
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
