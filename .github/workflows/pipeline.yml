@@ -44,7 +44,9 @@ jobs:
       - name: e2e tests
         uses: cypress-io/github-action@v5
         with:
-          command: yarn test:e2e
+          command: |
+            echo "running_step=$running_step, cypress e2e test" >> $GITHUB_ENV
+            yarn test:e2e
           start: yarn start-prod
           wait-on: http://localhost:5000        
 
