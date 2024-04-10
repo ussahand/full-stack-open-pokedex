@@ -19,10 +19,8 @@ jobs:
       - name: update steps for Node install
         run: echo "running_step=$running_step, node install" >> $GITHUB_ENV
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "16"
+      - uses: actions/setup-node@v4
+        with: node-version: "16"
 
       - name: Install dependencies
         run: | 
@@ -78,14 +76,18 @@ jobs:
         with:
           severity: info
           details: "workflow successfully passed:  ${{ env.running_step }}."
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          # webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+
+          FULL_STACK_COURSE_WEB_HOOK
       - name: linux Test Error
         if: failure()
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: error
           details: "workflow failed in the last step: ${{ env.running_step }}."
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          # webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
 
 
   tag_release:
