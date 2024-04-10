@@ -101,17 +101,17 @@ jobs:
       run: exit 1  # This step fails
       #continue-on-error: true    
 
+     - name: Test Failure
+       uses: rjstone/discord-webhook-notify@v1
+       if: failure()
+       with:
+         severity: error
+         details: workflow== Failed!
+         webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
+
     - name: Windows Test Info
       uses: rjstone/discord-webhook-notify@v1.0.4
-     - name: Test Failure
-      uses: rjstone/discord-webhook-notify@v1
-      if: failure()
-      with:
-        severity: error
-        details: workflow== Failed!
-        webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
-
-     if: success()
+      if: success()
       with:
           severity: info
           details: Test== Succeeded!
