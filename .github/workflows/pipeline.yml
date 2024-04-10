@@ -80,7 +80,6 @@ jobs:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
 
-          FULL_STACK_COURSE_WEB_HOOK
       - name: linux Test Error
         if: failure()
         uses: rjstone/discord-webhook-notify@v1
