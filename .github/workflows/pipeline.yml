@@ -9,7 +9,7 @@ on:
     types: [opened, synchronize]
 env: 
   skip_msg: ${{ contains(toJson(github.event.commits.*.message), '#skip') }}
-  running_step: "not started"
+  running_step: ""
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-latest
@@ -23,8 +23,8 @@ jobs:
 
       - name: Install dependencies
         run: | 
+          echo "running_step=dependecies install" >> $GITHUB_ENV
           yarn
-          echo "running_step=yarn install" >> $GITHUB_ENV
 
       - name: check style
         run: |
@@ -32,10 +32,14 @@ jobs:
           yarn eslint
 
       - name: build production
-        run: yarn build
+        run: |
+          echo "running_step=$running_step, build" >> $GITHUB_ENV
+          yarn build
 
       - name: run tests
-        run: yarn test
+        run: |
+          echo "running_step=$running_step, test" >> $GITHUB_ENV
+          yarn test
 
       - name: e2e tests
         uses: cypress-io/github-action@v5
@@ -51,7 +55,9 @@ jobs:
 
       - name: Deploy to Fly.io
         if: ${{ github.event_name == 'push' && env.skip_msg != 'true'}}
-        run: flyctl deploy --remote-only --config fly.toml --env "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
+        run: |
+          echo "running_step=$running_step, deploy to fly.io" >> $GITHUB_ENV
+          flyctl deploy --remote-only --config fly.toml --env "TIMESTAMP=$(date +%Y%m%d%H%M%S)"
         env:
           #allowing flyctl to authenticate with your Fly.io account.
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}       
