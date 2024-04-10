@@ -28,7 +28,7 @@ jobs:
 
     - name: Test Failure
       uses: rjstone/discord-webhook-notify@v1
-      if: failure()
+      if: ${{ failure() }}
       with:
         severity: error
         details: workflow Failed!
