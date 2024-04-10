@@ -53,13 +53,13 @@ jobs:
 
       - name: global message
         run: echo "$gmsg, ${{ secrets.DISCORD_WEBHOOK }}"
-      # - name: Test Success
-      #     uses: rjstone/discord-webhook-notify@v1.0.4
-      #     if: success()
-      #     with:
-      #         severity: info
-      #         details: Test Succeeded!
-              #webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Test Success
+          uses: rjstone/discord-webhook-notify@v1.0.4
+          # if: success()
+          with:
+              severity: info
+              details: Test Succeeded!
+              webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       # - name: Test Failure
       #     uses: redstone/discord-webhook-notify@v1
       #     if: failure()
