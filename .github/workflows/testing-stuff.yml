@@ -10,6 +10,13 @@ jobs:
   a_test_job:
     runs-on: ubuntu-20.04
     steps:
+      - name: Linux Test Info
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: Test succeeded.
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
       - uses: actions/checkout@v4
       - name: github context
         env:
@@ -67,19 +74,9 @@ jobs:
       #         severity: error
       #         details: Test Failed!
       #         webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
-  linux_test:
-    runs-on: ubuntu-latest
-    name: Linux Test Job
-    steps:
-    - name: Linux Test Info
-      uses: rjstone/discord-webhook-notify@v1
-      with:
-        severity: info
-        details: Test succeeded.
-        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-    - name: Linux Test Warn
-      uses: rjstone/discord-webhook-notify@v1
-      with:
-        severity: warn
-        details: Test warning.
-        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}      
+  # linux_test:
+  #   runs-on: ubuntu-latest
+  #   name: Linux Test Job
+  #   steps:
+
+   
