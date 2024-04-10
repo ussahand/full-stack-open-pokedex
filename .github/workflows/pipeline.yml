@@ -25,7 +25,7 @@ jobs:
         run: | 
           yarn
           running_step = "uuuuuuuuuu"
-          echo "running_step=yarn install" >> $GITHUB_ENV
+          echo "running_steph=yarninstall" >> $GITHUB_ENV
 
       - name: check style
         run: yarn eslint
