@@ -20,7 +20,8 @@ jobs:
         run: echo "running_step=$running_step, node install" >> $GITHUB_ENV
 
       - uses: actions/setup-node@v4
-        with: node-version: "16"
+        with: 
+          node-version: "16"
 
       - name: Install dependencies
         run: | 
@@ -76,8 +77,8 @@ jobs:
         with:
           severity: info
           details: "workflow successfully passed:  ${{ env.running_step }}."
-          # webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
 
           FULL_STACK_COURSE_WEB_HOOK
       - name: linux Test Error
@@ -86,8 +87,8 @@ jobs:
         with:
           severity: error
           details: "workflow failed in the last step: ${{ env.running_step }}."
-          # webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
 
 
   tag_release:
