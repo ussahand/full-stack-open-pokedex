@@ -37,7 +37,7 @@ jobs:
 
           #def a GitHub env and you can access it without step hirarchy
           echo "new_msg=$msg1"  >> $GITHUB_ENV
-          gvar="rrrrrrrrrr"
+          echo gvar="rrrrrrrrrr"
       - name: updated variable
         run: |
           echo "updated var: ${{ env.new_msg }}"
