@@ -93,7 +93,7 @@ jobs:
           echo "new tag = ${{steps.step1.outputs.new_tag}}"
           echo "tag = ${{steps.step1.outputs.tag}}"
           echo "bumped part = ${{steps.step1.outputs.part}}"
-  windows_test:
+ windows_test:
     runs-on: windows-latest
     name: Windows Test Job
     steps:
@@ -101,13 +101,13 @@ jobs:
       run: exit 1  # This step fails
       #continue-on-error: true    
 
-     - name: Test Failure
-       uses: rjstone/discord-webhook-notify@v1
-       if: failure()
-       with:
-         severity: error
-         details: workflow== Failed!
-         webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
+    - name: Test Failure
+      uses: rjstone/discord-webhook-notify@v1
+      if: failure()
+      with:
+        severity: error
+        details: workflow== Failed!
+        webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
 
     - name: Windows Test Info
       uses: rjstone/discord-webhook-notify@v1.0.4
