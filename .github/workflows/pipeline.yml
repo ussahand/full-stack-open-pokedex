@@ -76,7 +76,7 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: error
-          details: workflow failed in ${{ toJson(env) }}.
+          details: workflow failed in the last step: ${{ env.running_step }}.
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
   tag_release:
