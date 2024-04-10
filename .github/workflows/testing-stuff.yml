@@ -3,7 +3,7 @@ name: Testing stuff
 on:
   push:
     branches:
-      - main
+      - cicd
 env:
   gmsg: ${{ join(github.event.commits.*.message, ',') }}
 jobs:
@@ -51,5 +51,35 @@ jobs:
         if: ${{ !contains(toJson(github.event.commits.*.message), '#skip') }}
         run: echo "no skippppp"
 
-      - name: global message
-        run: echo "$gmsg"
+      # - name: global message
+      #   run: echo "$gmsg, ${{ secrets.DISCORD_WEBHOOK }}"
+      # - name: Test Success
+      #     uses: rjstone/discord-webhook-notify@v1.0.4
+      #     # if: success()
+      #     with:
+      #         severity: info
+      #         details: Test Succeeded!
+      #         webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      # - name: Test Failure
+      #     uses: redstone/discord-webhook-notify@v1
+      #     if: failure()
+      #     with:
+      #         severity: error
+      #         details: Test Failed!
+      #         webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
+  linux_test:
+    runs-on: ubuntu-latest
+    name: Linux Test Job
+    steps:
+    - name: Linux Test Info
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: info
+        details: Test succeeded.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+    - name: Linux Test Warn
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: warn
+        details: Test warning.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}      
