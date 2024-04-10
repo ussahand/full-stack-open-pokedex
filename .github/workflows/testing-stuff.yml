@@ -36,13 +36,6 @@ jobs:
 
           #def a GitHub env and you can access it without step hirarchy
           echo "new_msg=$msg1"  >> $GITHUB_ENV
-      - name: Linux Test Info
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: info
-          details: Test succeeded.
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-
 
       - name: Should Skip or not
         env:
@@ -54,6 +47,13 @@ jobs:
           echo "$no_skip, ${{steps.jcm.outputs.msg}} ,  ${{ env.no_skip }}"
           echo "$no_skip, $new_msg"
       
+      - name: Linux Test Info
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: Test succeeded.
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
       - name: skip 2
         if: ${{ !contains(toJson(github.event.commits.*.message), '#skip') }}
         run: echo "no skippppp"
