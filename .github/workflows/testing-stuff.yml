@@ -54,18 +54,27 @@ jobs:
       - name: global message
         run: echo "$gmsg,  msg "
 
-      # - name: Test Success
-      #   uses: rjstone/discord-webhook-notify@v1.0.4
-      #   if: success()
-      #   with:
-      #         severity: info
-      #         details: Test Succeeded!
-      #         webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      # - name: Test Failure
-      #   uses: rjstone/discord-webhook-notify@v1
-      #   if: failure()
-      #   with:
-      #         severity: error
-      #         details: Test Failed!
-      #         webhookUrl: ${{ secrets.DISCORD__WEBHOOK }}
+
+  linux_test:
+    runs-on:  ubuntu-latest
+    name: linux Test Job
+    steps:
+    - name: Step 2
+      run: exit 1  # This step fails
+       continue-on-error: true    
+           
+    - name: linux Test Info
+      if: success()
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: info
+        details: test succeeded.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+    - name: linux Test Error
+      if: failure()
+      uses: rjstone/discord-webhook-notify@v1
+      with:
+        severity: error
+        details: test error.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
    

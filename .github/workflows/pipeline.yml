@@ -93,24 +93,4 @@ jobs:
           echo "tag = ${{steps.step1.outputs.tag}}"
           echo "bumped part = ${{steps.step1.outputs.part}}"
 
-  # linux_test:
-  #   runs-on:  ubuntu-latest
-  #   name: linux Test Job
-  #   steps:
-  #   - name: Step 2
-  #     run: exit 1  # This step fails
-  #      continue-on-error: true        
-  #   - name: linux Test Info
-  #     if: success()
-  #     uses: rjstone/discord-webhook-notify@v1
-  #     with:
-  #       severity: info
-  #       details: workflow succeeded.
-  #       webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-  #   - name: linux Test Error
-  #     if: failure()
-  #     uses: rjstone/discord-webhook-notify@v1
-  #     with:
-  #       severity: error
-  #       details: workflow error.
-  #       webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
