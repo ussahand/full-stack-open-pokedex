@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: yarn
         env:
-          running_step: "yanr istall"
+          env.running_step: "yanr istall"
 
       - name: check style
         run: yarn eslint
