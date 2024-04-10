@@ -22,9 +22,9 @@ jobs:
           node-version: "16"
 
       - name: Install dependencies
-        run: yarn
-        env:
-          env.running_step: "yanr istall"
+        run: | 
+          yarn
+          running_step = "uuuuuuuuuu"
 
       - name: check style
         run: yarn eslint
