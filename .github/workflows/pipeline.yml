@@ -99,8 +99,8 @@ jobs:
     steps:
     - name: Step 2
       run: exit 1  # This step fails
+      #continue-on-error: true    
       
-    continue-on-error: true    
     - name: Windows Test Info
       uses: rjstone/discord-webhook-notify@v1.0.4
       if: success()
