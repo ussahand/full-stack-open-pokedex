@@ -23,11 +23,11 @@ jobs:
 
       - name: Install dependencies
         run: yarn
+        env:
+          running_step: "yanr istall"
 
       - name: check style
         run: yarn eslint
-        env:
-          running_step: "yanr istall"
 
       - name: build production
         run: yarn build
