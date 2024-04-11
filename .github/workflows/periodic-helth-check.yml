@@ -1,4 +1,4 @@
-name: hwllo github action
+name: Periodic Helth Check
 on: push
 jobs:
   url_helth_check:
