@@ -1,5 +1,8 @@
 name: Periodic Helth Check
-on: push
+#on: push
+on:
+  schedule:
+    - cron: '58 * * * *'
 jobs:
   url_helth_check:
     runs-on: ubuntu-latest
