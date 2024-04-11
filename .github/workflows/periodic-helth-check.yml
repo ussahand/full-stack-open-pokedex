@@ -20,6 +20,7 @@ jobs:
         with:
           severity: info
           description: "periodic helth check:"
+          username: ${{ github.repository }}
           details: "PASSED"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
@@ -29,7 +30,7 @@ jobs:
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: error
-          description: "periodic helth check:"
-          details: "FAILED"
+          # description: "periodic helth check:"
+          details: "periodic helth check: FAILED"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
