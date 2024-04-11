@@ -22,6 +22,7 @@ jobs:
           details: "periodic helth check is successfull."
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+          description: This is a custom description.
 
       - name: website helth check failure
         if: failure()
@@ -31,3 +32,4 @@ jobs:
           details: "periodic helth check failed."
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+          description: This is a custom description.
