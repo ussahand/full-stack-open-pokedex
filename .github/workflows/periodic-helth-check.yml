@@ -2,6 +2,7 @@ name: hwllo github action
 on: push
 jobs:
   url_helth_check:
+    runs-on: ubuntu-latest
     steps:
       - name: Check the deployed service URL
         uses: jtalk/url-health-check-action@v4
