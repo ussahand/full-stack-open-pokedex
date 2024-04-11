@@ -1,4 +1,4 @@
-hwllo github action
+name: hwllo github action
 on: push
 steps:
   - name: Check the deployed service URL
