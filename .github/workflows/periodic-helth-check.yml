@@ -13,7 +13,7 @@ jobs:
           # Fail this action after this many failed attempts
           # max-attempts: 3 # Optional, defaults to 1
 
-      # send success and failure to Discord
+      # send success and failure to Discord 
       - name: website helth check success
         if: ${{ success() }}
         uses: rjstone/discord-webhook-notify@v1
