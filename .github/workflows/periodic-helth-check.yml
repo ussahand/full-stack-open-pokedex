@@ -4,13 +4,30 @@ jobs:
   url_helth_check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check the deployed service URL
-        uses: jtalk/url-health-check-action@v4
+      # - name: Check the deployed service URL
+      - uses: jtalk/url-health-check-action@v4
         with:
-          # Check the following URLs one by one sequentially
           url: https://full-stack-pokedex-cicd.fly.dev/
           # Follow redirects, or just report success on 3xx status codes
           follow-redirect: false # Optional, defaults to "false"
           # Fail this action after this many failed attempts
-          max-attempts: 3 # Optional, defaults to 1
+          # max-attempts: 3 # Optional, defaults to 1
 
+      # send success and failure to Discord
+      - name: website helth check success
+        if: ${{ success() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          details: "periodic helth check is successfull."
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
+
+      - name: website helth check failure
+        if: failure()
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          details: "periodic helth check failed."
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          # webhookUrl: ${{ secrets.FULL_STACK_COURSE_WEB_HOOK }}
