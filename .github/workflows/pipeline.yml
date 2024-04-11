@@ -1,7 +1,7 @@
 name: Deployment CI Pipeline
 on:
   push:
-    branches: main
+    branches: main000
   pull_request:
     branches: [main]  #Specifies that the workflow should be triggered only when 
     #the base branch of the pull request is main. This means that the pull request 
@@ -72,7 +72,7 @@ jobs:
       #------------------------------------
       # send success and failure to Discord
       - name: linux Test Info
-        if: success()
+        if: ${{ success()  && env.skip_msg != 'true' }}
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: info
