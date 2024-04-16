@@ -2,7 +2,7 @@ name: Periodic Helth Check
 #on: push
 on:
   schedule:
-    - cron: '58 * * * *'
+    - cron: '58 10 28 5 0'
 jobs:
   url_helth_check:
     runs-on: ubuntu-latest
